@@ -1,0 +1,20 @@
+<h1>Stories</h1>
+<%= link_to 'New Story', new_story_path %>
+
+<h2>Currently Writing</h2>
+<ul>
+  <% @writing_stories&.each do |story| %>
+    <li>
+      <%= link_to story.title, edit_story_path(story) %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Finished Stories</h2>
+<ul>
+  <% @finished_stories&.each do |story| %>
+    <li>
+      <%= link_to story.title, story_path(story) %>
+    </li>
+  <% end %>
+</ul>

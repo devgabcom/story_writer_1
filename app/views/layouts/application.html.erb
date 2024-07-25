@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StoryWriter</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render 'layouts/flash' %>
+    <% end %>
+    <%= yield(:banner) if content_for?(:banner) %>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

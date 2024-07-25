@@ -1,0 +1,25 @@
+<h1>New Story</h1>
+
+<%= form_with model: @story, local: true, data: { turbo: false } do |form| %>
+  <div id="key-elements-container">
+    <%= form.label :key_elements, 'Key Elements (1 to 5)' %>
+    <div class="key-element">
+      <%= form.text_field :key_elements, name: 'story[key_elements][]', size: 30 %>
+      <button type="button" class="remove-key-element">Remove</button>
+    </div>
+  </div>
+  <button type="button" id="add-key-element">Add another element</button>
+
+  <br><br>
+
+  <div>
+    <%= form.label :num_chapters, 'Number of Chapters (1 to 10)' %>
+    <%= form.number_field :num_chapters, in: 1..10, required: true %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.submit 'Generate Story Outline' %>
+  </div>
+<% end %>

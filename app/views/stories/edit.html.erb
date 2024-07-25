@@ -1,0 +1,24 @@
+<h1>Editing: <%= @story.title %></h1>
+<h2>Outline:</h2>
+<p><%= @story.outline %></p>
+<h2>Chapters:</h2>
+<div id="chapters-list">
+  <% if @story.chapters.any? %>
+    <ul>
+      <% @story.chapters.each do |chapter| %>
+        <%= render partial: 'chapter', locals: { chapter: chapter } %>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No chapters available.</p>
+  <% end %>
+</div>
+
+<div id="actions">
+  <% if @story.chapters.any? { |chapter| chapter.chapter_detail.nil? } %>
+    <%= button_to 'Write Next Chapter', write_next_chapter_story_path(@story), method: :post, form: { data: { turbo_frame: "_top" } } %>
+    <%= button_to 'Finish Story', finish_story_story_path(@story), method: :post, form: { data: { turbo_frame: "_top" } } %>
+  <% else %>
+    <%= link_to 'Read Story', story_path(@story) %>
+  <% end %>
+</div>

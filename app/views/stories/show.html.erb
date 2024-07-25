@@ -1,0 +1,17 @@
+<%= content_for :banner do %>
+  <div class="banner-text">
+    <h1><%= @story.title %></h1>
+  </div>
+<% end %>
+
+<div class="content-with-sidebar">
+  <div class="story">
+    <h1><%= @story.title %></h1>
+    <% @story.chapters.each do |chapter| %>
+      <section class='chapter' id='chapter-<%= chapter.chapter_number %>'>
+        <h2><%= chapter.chapter_title %></h2>
+        <p><%= chapter.chapter_detail.gsub(/\n\n/, '</p><p>').gsub(/\n/, '</p><p>').html_safe %></p>
+      </section>
+    <% end %>
+  </div>
+</div>

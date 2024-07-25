@@ -1,0 +1,15 @@
+<% chapter_hash = chapter.attributes if defined?(chapter) %>
+<li id="chapter_<%= chapter_hash[:chapter_number] %>">
+  <p><strong><%= chapter_hash[:chapter_title] %></strong>
+    <% if chapter_hash[:chapter_detail].present? %>
+      <button class="toggle-detail" data-target="chapter_detail_<%= chapter_hash[:chapter_number] %>">Show Details</button>
+    <% else %>
+      <span>- Not Written</span>
+    <% end %>
+  </p>
+  <% if chapter_hash[:chapter_detail].present? %>
+    <div id="chapter_detail_<%= chapter_hash[:chapter_number] %>" style="display: none;">
+      <p><%= chapter_hash[:chapter_detail].gsub(/\n\n/, '</p><p>').gsub(/\n/, '</p><p>').html_safe %></p>
+    </div>
+  <% end %>
+</li>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Story App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">  <%= javascript_importmap_tags %>
+</head>
+<body>
+<% if content_for? :banner %>
+  <header class="banner">
+    <%= yield :banner %>
+  </header>
+<% end %>
+<div class="layout">
+  <%= yield %>
+</div>
+</body>
+</html>
